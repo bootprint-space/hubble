@@ -12,10 +12,10 @@
   "dependencies": {
     "bootprint-js": "^1.0.1",
     "discord.js": "^14.25.1",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
+    "@eslint/js": "^9.39.2",
     "eslint": "^9.37.0"
   }
 }
