@@ -14,6 +14,7 @@ module.exports = {
                 .setTitle('� Moon')
                 .setDescription(moonData.fact)
                 .setImage(moonData.image)
+                .setFooter({ text: 'Powered by Bootprint', iconURL: 'https://cdn.bootprint.space/logo_dark.png' })
                 .setTimestamp();
 
             await interaction.reply({ embeds: [embed] });
