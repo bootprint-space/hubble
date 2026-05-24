@@ -2,28 +2,25 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('info')
-        .setDescription('About Hubble'),
+        .setName('ping')
+        .setDescription('Check the bot\'s latency.'),
+    
     async execute(interaction) {
-        const { client } = interaction;
-        const serverCount = client.guilds.cache.size;
-        const userCount = client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0);
+        const response = await interaction.deferReply({ withResponse: true });
+        
+        const roundtrip = response.resource.message.createdTimestamp - interaction.createdTimestamp;
+        const websocket = interaction.client.ws.ping;
 
         const embed = new EmbedBuilder()
             .setColor(0x0000FF)
-            .setTitle('🔭 Hubble')
-            .setDescription('Explore the universe through images and facts, powered by the Bootprint API.')
+            .setTitle('🏓 Pong!')
             .addFields(
-                { name: '📡 Servers', value: `${serverCount}`, inline: true },
-                { name: '👥 Users', value: `${userCount}`, inline: true },
-                { name: '🌐 Website', value: '[bootprint.space](https://bootprint.space)', inline: true },
-                { name: '📖 Docs', value: '[bootprint.space/docs](https://bootprint.space/docs)', inline: true },
-                { name: '💬 Discord', value: '[Join](https://discord.gg/nxR5YN6R9q)', inline: true },
-                { name: '❤️ Sponsor', value: '[GitHub Sponsors](https://github.com/sponsors/bootprint-space)', inline: true },
+                { name: 'API: ', value: `\`${roundtrip}ms\``, inline: true },
+                { name: 'Gateway: ', value: `\`${websocket}ms\``, inline: true }
             )
             .setFooter({ text: 'Powered by Bootprint', iconURL: 'https://cdn.bootprint.space/logo_dark.png' })
             .setTimestamp();
-
-        await interaction.reply({ embeds: [embed] });
+        
+        await interaction.editReply({ embeds: [embed] });
     },
 };
