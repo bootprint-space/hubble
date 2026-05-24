@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('help')
-        .setDescription('List all Hubble commands'),
+        .setDescription('Lists all Hubble commands.'),
     async execute(interaction) {
         const embed = new EmbedBuilder()
             .setColor(0x0000FF)

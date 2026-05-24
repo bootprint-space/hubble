@@ -4,7 +4,7 @@ const Bootprint = require('bootprint-js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('venus')
-        .setDescription('Venus info!'),
+        .setDescription('Information about Venus'),
     async execute(interaction) {
         try {
             const [venusData] = await Bootprint.getAsync(['venus']);
