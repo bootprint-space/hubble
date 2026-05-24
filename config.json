@@ -1,3 +1,5 @@
 {
-	"clientId": "YOUR_CLIENT_ID"
+  "token": "YOUR_BOT_TOKEN",
+  "clientId": "YOUR_APPLICATION_ID",
+  "guildId": "YOUR_DISCORD_SERVER_ID"
 }
