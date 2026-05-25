@@ -6,7 +6,7 @@ module.exports = {
         .setDescription('Checks the bot\'s latency'),
     
     async execute(interaction) {
-        const response = await interaction.deferReply({ withResponse: true });
+        const response = await interaction.deferReply({ fetchReply: true });
 
         const roundtrip = response.createdTimestamp - interaction.createdTimestamp;
         const websocket = interaction.client.ws.ping;
